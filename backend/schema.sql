@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS athletes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    grade INTEGER NOT NULL,
+    personal_record TEXT NOT NULL,
+    events TEXT NOT NULL DEFAULT '5K'
+);
+
+CREATE TABLE IF NOT EXISTS meets (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    date TEXT NOT NULL,
+    location TEXT NOT NULL,
+    description TEXT NOT NULL DEFAULT ''
+);
+
+CREATE TABLE IF NOT EXISTS results (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    athlete_id INTEGER NOT NULL,
+    meet_id INTEGER NOT NULL,
+    time TEXT NOT NULL,
+    place INTEGER NOT NULL,
+    FOREIGN KEY (athlete_id) REFERENCES athletes(id),
+    FOREIGN KEY (meet_id) REFERENCES meets(id)
+);

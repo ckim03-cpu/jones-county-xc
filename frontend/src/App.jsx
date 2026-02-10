@@ -1,10 +1,16 @@
+import AthleteList from './components/AthleteList'
+
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-900">Hello World</h1>
-        <p className="mt-2 text-lg text-gray-600">Jones County XC</p>
-      </div>
+    <div className="min-h-screen bg-gray-100">
+      <header className="bg-white shadow">
+        <div className="max-w-4xl mx-auto py-6 px-4">
+          <h1 className="text-3xl font-bold text-gray-900">Jones County XC</h1>
+        </div>
+      </header>
+      <main className="max-w-4xl mx-auto py-8 px-4">
+        <AthleteList />
+      </main>
     </div>
   )
 }

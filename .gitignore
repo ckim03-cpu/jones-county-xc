@@ -1,2 +1,4 @@
 backend/backend
+backend/backend-linux
+backend/*.db
 .DS_Store
