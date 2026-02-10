@@ -5,7 +5,7 @@ import (
 )
 
 func healthHandler(w http.ResponseWriter, r *http.Request) {
-  w.Write([]byte("OK"))
+  w.Write([]byte("ok"))
 }
 
 func main() {
