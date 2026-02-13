@@ -133,6 +133,20 @@ func initDB(dbPath string) *sql.DB {
 		log.Fatal("Could not apply schema: ", err)
 	}
 
+	// Seed sample data if the athletes table is empty
+	var count int
+	conn.QueryRow("SELECT COUNT(*) FROM athletes").Scan(&count)
+	if count == 0 {
+		seed, err := os.ReadFile("seed.sql")
+		if err != nil {
+			log.Println("No seed.sql found, skipping seed data")
+		} else if _, err := conn.Exec(string(seed)); err != nil {
+			log.Println("Warning: could not apply seed data:", err)
+		} else {
+			log.Println("Seed data loaded successfully")
+		}
+	}
+
 	return conn
 }
 
